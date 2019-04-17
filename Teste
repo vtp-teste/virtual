@@ -1,0 +1,82 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@vtp-teste
+
+0
+0
+
+    0
+
+vtp-teste/test-virtual Private
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Insights
+Settings
+test-virtual/virtualattribute
+@vtp-teste vtp-teste Original 28659cf 4 minutes ago
+45 lines (40 sloc) 1.02 KB
+function main(P1){
+        return findReplace(convert(P1),"_","|");
+}
+function convert (attribute){
+	var result ;
+	if(attribute instanceof Array){
+		result = [];
+		for(var i=0; i<attribute.length; i++)
+			result[i] = processa(attribute[i]);
+		}else{
+			result = processa(attribute);
+	}
+return result;
+}
+
+function findReplace(attribute, findString, replaceString){
+	    var result;
+    if(attribute instanceof Array){
+		         result = [];
+         for(var i=0; i<attribute.length; i++){
+             			result[i] =attribute[i].split(findString).join(replaceString);
+         }
+	    }else{
+         result = attribute.split(findString).join(replaceString);
+    	}
+    return result;
+}
+
+function processa(role){
+   var pos = 0;
+   var roleName = role.trim().toLowerCase();
+   pos = roleName.indexOf(",");
+  var pos2 = roleName.indexOf(",",pos+1);
+  var groupApp = roleName.substring(pos+1,pos2);
+  var groupCN = roleName.substring(3,pos);
+
+   var temp = groupApp;
+
+if (groupApp.equals("ou=GCO") == true) { 
+return groupCN; 
+} else {
+return "";
+}
+}
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
